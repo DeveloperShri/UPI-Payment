@@ -84,6 +84,18 @@ public final class PaymentActivity extends AppCompatActivity {
                 ((Activity) PaymentActivity.this).startActivityForResult(paymentIntent, PaymentActivity.PAYMENT_REQUEST);
                 return;
             }
+        }else if(PAYMENT_APP.equals("PAYTM")){
+            paymentIntent.setPackage("net.one97.paytm");
+            if (paymentIntent.resolveActivity(getPackageManager()) != null) {
+                ((Activity) PaymentActivity.this).startActivityForResult(paymentIntent, PaymentActivity.PAYMENT_REQUEST);
+                return;
+            }
+        }else if(PAYMENT_APP.equals("GPAY")){
+            paymentIntent.setPackage("com.google.android.apps.nbu.paisa.user");
+            if (paymentIntent.resolveActivity(getPackageManager()) != null) {
+                ((Activity) PaymentActivity.this).startActivityForResult(paymentIntent, PaymentActivity.PAYMENT_REQUEST);
+                return;
+            }
         }else{
             if (paymentIntent.resolveActivity(getPackageManager()) != null) {
                 List<ResolveInfo> intentList = getPackageManager().queryIntentActivities(paymentIntent, 0);
